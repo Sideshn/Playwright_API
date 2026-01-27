@@ -1,0 +1,24 @@
+{
+  "name": "playwright-api-framework",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:report": "npx playwright show-report",
+    "install:browsers": "npx playwright install --with-deps"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.10.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "xlsx": "^0.18.5",
+    "xlsx-populate": "^1.21.0",
+    "p-retry": "^7.1.0",
+    "winston": "^3.13.1"
+  }
+}

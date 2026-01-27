@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Brands List Response",
+  "type": "object",
+  "required": ["brands"],
+  "properties": {
+    "brands": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "brand"],
+        "properties": {
+          "id": { "type": "number" },
+          "brand": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}
+
