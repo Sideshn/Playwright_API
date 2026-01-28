@@ -56,6 +56,7 @@ pipeline {
                     echo "📥 Installing npm dependencies..."
                     nodejs(nodeJSInstallationName: "NodeJS ${NODE_VERSION}") {
                         bat 'npm ci'  // Use ci for faster, reliable installs in CI environments
+                        bat 'npm install --save-dev allure-playwright'  // Install Allure reporter
                     }
                 }
             }
