@@ -98,7 +98,7 @@ pipeline {
                     }
                     
                     // Add reporter for CI
-                    testCommand += ' --reporter=list,html,json'
+                    testCommand += ' --reporter=list,allure-playwright'
                     
                     echo "Executing: ${testCommand}"
                     
@@ -117,27 +117,22 @@ pipeline {
                 }
             }
         }
-        
     }
     
     post {
         always {
             echo "📝 Publishing test results and artifacts..."
             
-            // Archive test results
-            archiveArtifacts artifacts: 'playwright-report/**/*', allowEmptyArchive: true, fingerprint: true
-            archiveArtifacts artifacts: 'test-results/**/*', allowEmptyArchive: true
+            // Archive Allure results
+            archiveArtifacts artifacts: 'allure-results/**/*', allowEmptyArchive: true
             archiveArtifacts artifacts: 'logs/**/*', allowEmptyArchive: true
             
-            // Publish HTML Report
-            publishHTML([
-                allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: 'playwright-report',
-                reportFiles: 'index.html',
-                reportName: 'Playwright Test Report',
-                reportTitles: 'Playwright API Test Results'
+            // Publish Allure Report
+            allure([
+                includeProperties: false,
+                jdk: '',
+                commandline: 'Allure',
+                results: [[path: 'allure-results']]
             ])
             
             // Clean workspace if needed
