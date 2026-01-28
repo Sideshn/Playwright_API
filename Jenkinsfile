@@ -118,17 +118,6 @@ pipeline {
             }
         }
         
-        stage('Generate Reports') {
-            steps {
-                script {
-                    echo "📊 Generating test reports..."
-                    nodejs(nodeJSInstallationName: "NodeJS ${NODE_VERSION}") {
-                        // Generate HTML report
-                        bat 'npx playwright show-report --host 127.0.0.1'
-                    }
-                }
-            }
-        }
     }
     
     post {
