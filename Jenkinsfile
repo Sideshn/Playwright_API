@@ -62,16 +62,16 @@ pipeline {
             }
         }
         
-        stage('Install Playwright Browsers') {
-            steps {
-                script {
-                    echo "🌐 Installing Playwright browsers..."
-                    nodejs(nodeJSInstallationName: "NodeJS ${NODE_VERSION}") {
-                        bat 'npx playwright install --with-deps'
-                    }
-                }
-            }
-        }
+        // stage('Install Playwright Browsers') {
+        //     steps {
+        //         script {
+        //             echo "🌐 Installing Playwright browsers..."
+        //             nodejs(nodeJSInstallationName: "NodeJS ${NODE_VERSION}") {
+        //                 bat 'npx playwright install --with-deps'
+        //             }
+        //         }
+        //     }
+        // }
         
         stage('Run Tests') {
             steps {
